@@ -13,23 +13,24 @@
                 {alert("Unable to get HTTPRequest object"); return;}
             }
             reqObj.open("GET", "https://uselessfacts.jsph.pl/api/v2/facts/random". true);
-            reqObj.onreadystatechange = displayData();
+            reqObj.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = this.responseText;
+                    var info = JSON.parse(data);
+                    document.getElementById("fact").innerHTML = data[1];
+                } else {
+                    document.getElementById("fact").innerHTML = "Unable to retrieve data";
+                }
+            };
             reqObj.send();
         }
 
-        function displayData() {
-            if (this.readyState == 4 && this.status == 200) {
-                var data = this.responseText;
-                var info = JSON.parse(data);
-                document.getElementById("fact").innerHTML = data[1];
-            } else {
-                document.getElementById("fact").innerHTML = "Unable to retrieve data";
-            }
-        }
+        // function displayData() {
+            
+        // }
     </script>
 </head>
 <body>
-    <div>Getting Joke:</div>
     <div id="fact"></div>
     <script language="javascript">
         getData();
