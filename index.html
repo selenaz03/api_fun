@@ -12,7 +12,7 @@
             if (!reqObj) {
                 {alert("Unable to get HTTPRequest object"); return;}
             }
-            reqObj.open("GET", "https://uselessfacts.jsph.pl/api/v2/facts/random". true);
+            reqObj.open("GET", "https://uselessfacts.jsph.pl/api/v2/facts/random", true);
             reqObj.onreadystatechange = displayData();
             reqObj.send();
         }
