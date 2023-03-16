@@ -14,6 +14,8 @@
             // }
             reqObj.open("GET", "https://uselessfacts.jsph.pl/api/v2/facts/random", true);
             reqObj.onreadystatechange = function() {
+                console.log("<br>current ready state: " + request.readyState);
+                console.log("<br>status: " + request.status);
                 if (reqObj.readyState == 4 && reqObj.status == 200) {
                     data = reqObj.responseText;
                     info = JSON.parse(data);
