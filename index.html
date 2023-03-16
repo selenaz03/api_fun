@@ -19,7 +19,10 @@
                 if (this.readyState == 4 && this.status == 200) {
                     var data = this.responseText;
                     var info = JSON.parse(data);
-                    document.getElementById("fact").innerHTML = data[1];
+                    for(i in info) {
+                        document.getElementById("fact").innerHTML = data[i];
+                        // document.write(i + ":"+ info[i]);
+                    }
                 } else if (this.readyState == 4 && this.status != 200) {
                     document.getElementById("fact").innerHTML = "Unable to retrieve data";
                 }
