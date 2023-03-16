@@ -18,8 +18,8 @@
         }
 
         function displayData() {
-            if (this.readyState == 4 && this.status == 200) {
-                var data = this.responseText;
+            if (reqObj.readyState == 4 && reqObj.status == 200) {
+                var data = reqObj.responseText;
                 var info = JSON.parse(data);
                 document.getElementById("fact").innerHTML = data[1].Location;
             } else {
