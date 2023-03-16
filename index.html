@@ -12,12 +12,12 @@
             if (!reqObj) {
                 {alert("Unable to get HTTPRequest object"); return;}
             }
-            reqObj.open("GET", "https://uselessfacts.jsph.pl/api/v2/facts/random", true);
+            reqObj.open("GET", "https://www.fishwatch.gov/api/species/red-snapper", true);
             reqObj.onreadystatechange = function() {
                 if (reqObj.readyState == 4 && reqObj.status == 200) {
                 var data = reqObj.responseText;
                 var info = JSON.parse(data);
-                document.getElementById("fact").innerHTML = data[1].Location;
+                document.getElementById("fact").innerHTML = data[0].Location;
                 } else {
                     document.getElementById("fact").innerHTML = "Unable to retrieve data";
                 }
