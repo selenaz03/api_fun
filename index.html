@@ -13,19 +13,21 @@
                 {alert("Unable to get HTTPRequest object"); return;}
             }
             reqObj.open("GET", "https://uselessfacts.jsph.pl/api/v2/facts/random", true);
-            reqObj.onreadystatechange = displayData();
-            reqObj.send();
-        }
-
-        function displayData() {
-            if (reqObj.readyState == 4 && reqObj.status == 200) {
+            reqObj.onreadystatechange = function() {
+                if (reqObj.readyState == 4 && reqObj.status == 200) {
                 var data = reqObj.responseText;
                 var info = JSON.parse(data);
                 document.getElementById("fact").innerHTML = data[1].Location;
-            } else {
-                document.getElementById("fact").innerHTML = "Unable to retrieve data";
-            }
+                } else {
+                    document.getElementById("fact").innerHTML = "Unable to retrieve data";
+                }
+            };
+            reqObj.send();
         }
+
+        // function displayData() {
+            
+        // }
     </script>
 </head>
 <body>
