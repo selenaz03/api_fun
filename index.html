@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    <title>API Fun</title>
+    <script>
+        function getData() {
+            var reqObj = new XMLHttpRequest();
+            if (!reqObj) {
+                {alert("Unable to get HTTPRequest object"); return;}
+            }
+            reqObj.open("GET", "https://uselessfacts.jsph.pl/api/v2/facts/random", true);
+            reqObj.onreadystatechange = function() {
+                console.log("ready: " + this.readyState);
+                console.log("status: " + this.status);
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = this.responseText;
+                    var info = JSON.parse(data);
+                    for(i in info) {
+                        document.getElementById("fact").innerHTML += data[i];
+                        // document.write(i + ":"+ info[i]);
+                    }
+                } else if (this.readyState == 4 && this.status != 200) {
+                    document.getElementById("fact").innerHTML = "Unable to retrieve data";
+                }
+            }
+            reqObj.send();
+        }
+
+        function fetchData() {
+            res = fetch("https://uselessfacts.jsph.pl/api/v2/facts/random")
+            .then (res => res.text())
+            .then (data => {
+                data = JSON.parse(data);
+                data = data[1];
+                document.getElementById("fact2").innerHTML = data;
+            })
+            .catch (error => console.log(error));
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Fun Fact</h1>
+    <div id="fact"></div></br>
+    <div id="fact2"></div></br>
+    <script language="javascript">
+        getData();
+        fetchData();
+    </script>
+    <p>The API I selected picks a random fun fact and I display it on the screen.</p></br>
+    <p>The website that created this API is https://jsph.pl/ and I found it on the github page of the list of APIs that was listed in the AJAX readings module.</p> </br>
+    <p>I used the AJAX GET method in order to retrieve the data in one way, and I used the Fetch fetch() function to retrieve the data the second way.</p></br>
+    <p>One application where this API would be helpful is possibly to display fun data in between screens when a site is loading. Another use for them could be to generate trivia questions or answers.</p>
+</body>
+</html>
