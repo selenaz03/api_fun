@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
     <title>API Fun</title>
+    <style>
+        #fact, #fact2 {
+            font-weight: bold;
+        }
+    </style>
     <script>
         function getData() {
             var reqObj = new XMLHttpRequest();
@@ -42,15 +47,19 @@
 </head>
 <body>
     <h1>Fun Fact</h1>
+    <h3>GET:</h3>
     <div id="fact"></div></br>
+    <h3>FETCH:</h3>
     <div id="fact2"></div></br>
     <script language="javascript">
         getData();
         fetchData();
     </script>
-    <p>The API I selected picks a random fun fact and I display it on the screen.</p></br>
-    <p>The website that created this API is https://jsph.pl/ and I found it on the github page of the list of APIs that was listed in the AJAX readings module.</p> </br>
-    <p>I used the AJAX GET method in order to retrieve the data in one way, and I used the Fetch fetch() function to retrieve the data the second way.</p></br>
-    <p>One application where this API would be helpful is possibly to display fun facts in between screens when a site is loading. Another use for them could be to generate trivia questions or answers.</p>
+
+    <ul>
+        <li>The API I selected picks a random fun fact and I display it on the screen.</li>
+        <li>I used the AJAX GET method in order to retrieve the data in one way, and I used the Fetch fetch() function to retrieve the data the second way.</li>
+        <li>One application where this API would be helpful is possibly to display fun facts in between screens when a site is loading. Another use for them could be to generate trivia questions or answers.</li>
+    </ul>
 </body>
 </html>
