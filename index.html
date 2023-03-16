@@ -20,7 +20,7 @@
                     var data = this.responseText;
                     var info = JSON.parse(data);
                     for(i in info) {
-                        document.getElementById("fact").innerHTML = data[i];
+                        document.getElementById("fact").innerHTML += data[i];
                         // document.write(i + ":"+ info[i]);
                     }
                 } else if (this.readyState == 4 && this.status != 200) {
@@ -28,10 +28,6 @@
                 }
             }
             reqObj.send();
-        }
-
-        function displayData() {
-            
         }
     </script>
 </head>
