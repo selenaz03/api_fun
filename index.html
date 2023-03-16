@@ -33,8 +33,7 @@
             .then (res => res.text())
             .then (data => {
                 data = JSON.parse(data);
-                data = data[1];
-                document.getElementById("fact2").innerHTML += data;
+                document.getElementById("fact2").innerHTML = data.text;
             })
             .catch (error => console.log(error));
         }
